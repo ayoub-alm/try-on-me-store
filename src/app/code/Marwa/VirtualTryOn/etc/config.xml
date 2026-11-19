@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <marwa_virtualtryon>
+            <general>
+                <enabled>1</enabled>
+                <show_on_listing>1</show_on_listing>
+                <show_on_product_page>1</show_on_product_page>
+                <badge_label>Essayer</badge_label>
+                <image_ids>category_page_grid,category_page_list,new_products_content_widget_grid,new_products_content_widget_list,related_products_list,upsell_products_list</image_ids>
+            </general>
+            <fitting_room>
+                <enabled>1</enabled>
+                <label>Cabine d'essayage</label>
+            </fitting_room>
+            <camera>
+                <facing_mode>user</facing_mode>
+                <mirror>1</mirror>
+            </camera>
+            <api>
+                <enabled>0</enabled>
+                <endpoint/>
+                <api_key backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <interval_ms>1500</interval_ms>
+                <timeout>20</timeout>
+            </api>
+        </marwa_virtualtryon>
+    </default>
+</config>

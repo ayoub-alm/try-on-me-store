@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Marwa_VirtualTryOn::css/tryon.css"/>
+    </head>
+    <body>
+        <!-- Fitting room window (camera). One per page, opened by badges, product button and top-bar link.
+             Attached to "root" (not before.body.end) because some themes (TemplateToaster) drop that container. -->
+        <referenceContainer name="root">
+            <block class="Magento\Framework\View\Element\Template" name="vto.modal" after="-"
+                   template="Marwa_VirtualTryOn::modal.phtml" ifconfig="marwa_virtualtryon/general/enabled">
+                <arguments>
+                    <argument name="vto_config" xsi:type="object">Marwa\VirtualTryOn\ViewModel\Config</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <!-- "Cabine d'essayage" link in the theme's black top bar (theme block marwa.topbar renders its children). -->
+        <referenceBlock name="marwa.topbar">
+            <block class="Magento\Framework\View\Element\Template" name="vto.fitting.room.link"
+                   template="Marwa_VirtualTryOn::fitting-room-link.phtml" ifconfig="marwa_virtualtryon/fitting_room/enabled">
+                <arguments>
+                    <argument name="vto_config" xsi:type="object">Marwa\VirtualTryOn\ViewModel\Config</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

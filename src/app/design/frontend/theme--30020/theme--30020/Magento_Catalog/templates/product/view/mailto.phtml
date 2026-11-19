@@ -1,0 +1,15 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+?>
+<?php $_product = $block->getProduct() ?>
+<?php if ($block->canEmailToFriend()) :?>
+<p class="third" style="margin-top: 10px;">
+  <img src="<?= $block->escapeUrl($block->getViewFileUrl('images/email.png')) ?>" alt="" style="vertical-align: middle;">
+    <a href="<?= $block->escapeUrl($this->helper(Magento\Catalog\Helper\Product::class)->getEmailToFriendUrl($_product)) ?>"
+       class="action mailto friend" style="vertical-align: middle; margin-left: 5px;"><span><?= $block->escapeHtml(__('Email')) ?></span></a></p>
+<?php endif; ?>

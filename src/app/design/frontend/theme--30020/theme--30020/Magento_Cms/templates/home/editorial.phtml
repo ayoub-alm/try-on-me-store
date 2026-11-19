@@ -1,0 +1,35 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+$shopUrl = $block->getBaseUrl() . '#home-new-arrivals';
+$img = fn(string $file) => $escaper->escapeUrl($block->getViewFileUrl('images/' . $file));
+?>
+<section class="mw-editorial">
+    <div class="mw-editorial__media" style="background-image:url('<?= $img('212180605Slide2.jpg') ?>')"></div>
+    <div class="mw-editorial__content">
+        <h2 class="mw-editorial__title">
+            <?= $escaper->escapeHtml(__('Des pièces fortes.')) ?><br>
+            <?= $escaper->escapeHtml(__('Des imprimés sublimes.')) ?>
+        </h2>
+        <a class="mw-btn mw-btn--outline" href="<?= $escaper->escapeUrl($shopUrl) ?>">
+            <?= $escaper->escapeHtml(__('Shoppez les nouveautés')) ?>
+        </a>
+    </div>
+</section>
+
+<section class="mw-duo">
+    <a class="mw-duo__item" href="<?= $escaper->escapeUrl($block->getUrl('catalogsearch/result', ['_query' => ['q' => 'chaussures']])) ?>">
+        <span class="mw-duo__img" style="background-image:url('<?= $img('212180605Slide0.jpg') ?>')"></span>
+        <span class="mw-duo__text">
+            <span class="mw-duo__title"><?= $escaper->escapeHtml(__('Nos chaussures')) ?></span>
+            <span class="mw-duo__cta"><?= $escaper->escapeHtml(__('Découvrez la sélection')) ?></span>
+        </span>
+    </a>
+    <a class="mw-duo__item" href="<?= $escaper->escapeUrl($shopUrl) ?>">
+        <span class="mw-duo__img" style="background-image:url('<?= $img('212180605Slide1.jpg') ?>')"></span>
+        <span class="mw-duo__text">
+            <span class="mw-duo__title"><?= $escaper->escapeHtml(__('Get comfy')) ?></span>
+            <span class="mw-duo__cta"><?= $escaper->escapeHtml(__('Shoppez nos looks comfy')) ?></span>
+        </span>
+    </a>
+</section>

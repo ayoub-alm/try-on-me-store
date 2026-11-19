@@ -1,0 +1,41 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+if ($block->getRequest()->getFullActionName() === 'cms_index_index'):
+    $shopUrl = $block->getBaseUrl() . '#home-new-arrivals';
+    $slides = [
+        ['eyebrow' => __('Nouvelle collection'), 'title' => __('Shoppez les nouveautés')],
+        ['eyebrow' => __('Collection vestes'), 'title' => __('Shoppez les vestes')],
+        ['eyebrow' => __('Collection manteaux'), 'title' => __('Shoppez les manteaux')],
+    ];
+?>
+<div class="margin_collapsetop"></div>
+<div id="ttr_slideshow_inner">
+<ul>
+<?php foreach ($slides as $i => $slide): ?>
+<li id="Slide<?= (int)$i ?>" class="ttr_slide" data-slideEffect="None">
+<a href="<?= $escaper->escapeUrl($shopUrl) ?>" aria-hidden="true" tabindex="-1"></a>
+<div class="ttr_slideshow_last">
+<div class="ttr_slideshow_element_alignment container" data-begintime="0" data-effect="None" data-easing="linear" data-slide="None" data-duration="0">
+</div>
+</div>
+<div class="home-hero">
+    <span class="home-hero__eyebrow"><?= $escaper->escapeHtml($slide['eyebrow']) ?></span>
+    <a class="home-hero__cta" href="<?= $escaper->escapeUrl($shopUrl) ?>"><?= $escaper->escapeHtml($slide['title']) ?></a>
+</div>
+</li>
+<?php endforeach; ?>
+</ul>
+</div>
+<div class="ttr_slideshow_in">
+<div class="ttr_slideshow_last">
+<div class="left-button">
+</div>
+<div id="nav"></div>
+<div class="ttr_slideshow_logo">
+</div>
+<div class="right-button">
+</div>
+</div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!--
+            Theme layout: merged with the core Magento_Catalog catalog_product_view.xml.
+            Core blocks (gallery, details, related, upsell, ...) are NOT re-declared here, so they keep
+            all the arguments/view models the installed Magento version gives them. Only the Bootstrap
+            column classes and the element order are changed.
+        -->
+        <referenceContainer name="product.info.main" htmlTag="div" htmlClass="product-info-main col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12"/>
+        <referenceContainer name="product.info.media" htmlTag="div" htmlClass="product media col-xl-6 col-lg-6 col-sm-12 col-md-6 col-xs-12 col-12"/>
+        <container name="bundle.options.container" htmlTag="div" htmlClass="bundle-options-container" after="product.info.media"/>
+
+        <move element="product.info.main" destination="content"/>
+        <move element="page.main.title" destination="product.info.main" before="-"/>
+        <move element="bundle.options.container" destination="content" after="product.info.main"/>
+        <move element="product.info.media" destination="content" before="-"/>
+        <move element="product.info.details" destination="content"/>
+        <move element="catalog.product.related" destination="content"/>
+        <move element="product.info.upsell" destination="content"/>
+    </body>
+</page>

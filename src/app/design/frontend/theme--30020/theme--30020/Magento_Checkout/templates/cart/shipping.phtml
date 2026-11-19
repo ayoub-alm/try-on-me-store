@@ -1,0 +1,57 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+<?php /** @var $block \Magento\Checkout\Block\Cart\Shipping */ ?>
+<?php /** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */ ?>
+<div id="block-shipping"
+     class="block shipping col-xl-4 col-lg-4 ttr_prochec_table_background active"
+     data-mage-init='{"collapsible":{"openedState": "active", "saveState": true}}'
+>
+    <div class="title" data-role="title" style="padding:5px 0px;">
+        <strong class="ttr_prodsigninheading" id="block-shipping-heading" role="heading" aria-level="2">
+            <?= $block->getQuote()->isVirtual()
+                ? $block->escapeHtml(__('Estimate Tax'))
+                : $block->escapeHtml(__('Estimate Shipping and Tax'))
+            ?>
+        </strong>
+    </div>
+    <hr>
+    <div id="block-summary"
+         data-bind="scope:'block-summary'"
+         class="ttr_cart_content content"
+         data-role="content"
+         aria-labelledby="block-shipping-heading"
+    >
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <script type="text/x-magento-init">
+            {
+                "#block-summary": {
+                    "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+                }
+            }
+        </script>
+<?php $serializedCheckoutConfig = /* @noEscape */ $block->getSerializedCheckoutConfig();
+
+$scriptString = <<<script
+
+            window.checkoutConfig = {$serializedCheckoutConfig};
+            window.customerData = window.checkoutConfig.customerData;
+            window.isCustomerLoggedIn = window.checkoutConfig.isCustomerLoggedIn;
+            require([
+                'mage/url',
+                'Magento_Ui/js/block-loader'
+            ], function(url, blockLoader) {
+                blockLoader(
+                    "{$block->escapeJs($block->escapeUrl($block->getViewFileUrl('images/loader-1.gif')))}"
+                );
+                return url.setBaseUrl('{$block->escapeJs($block->escapeUrl($block->getBaseUrl()))}');
+            })
+script;
+?>
+        <?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>
+    </div>
+</div>

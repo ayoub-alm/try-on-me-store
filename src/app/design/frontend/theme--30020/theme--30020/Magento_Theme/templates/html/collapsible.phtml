@@ -1,0 +1,20 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+
+<div class="block ttr_block <?= $block->escapeHtmlAttr($block->getBlockCss()) ?>">
+    <div class="title  ttr_block_header <?= $block->escapeHtmlAttr($block->getBlockCss()) ?>-title"
+         data-mage-init='{"toggleAdvanced": {"toggleContainers": "#<?= $block->escapeHtmlAttr($block->getBlockCss()) ?>", "selectorsToggleClass": "active"}}'>
+        <h3 class="ttr_block_heading">
+        
+            <?= $block->escapeHtml(__($block->getBlockTitle())) ?>
+        </h3>
+    </div>
+    <div class="content ttr_block_content <?= $block->escapeHtmlAttr($block->getBlockCss()) ?>-content"
+         id="<?= $block->escapeHtmlAttr($block->getBlockCss()) ?>">
+        <?= $block->getChildHtml() ?>
+    </div>
+</div>

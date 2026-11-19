@@ -1,0 +1,25 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+$messages = [
+    __('Livraison offerte à partir de 500 dhs'),
+    __('Retour gratuit pour toute commande'),
+    __('Cash à la livraison disponible'),
+];
+?>
+<div class="mw-topbar" role="region" aria-label="<?= $escaper->escapeHtmlAttr(__('Informations')) ?>">
+    <div class="mw-topbar__inner">
+        <?php $extra = $block->getChildHtml(); ?>
+        <?php if (trim($extra) !== ''): ?>
+            <div class="mw-topbar__left"><?= /* @noEscape */ $extra ?></div>
+        <?php endif; ?>
+        <ul class="mw-topbar__messages">
+            <?php foreach ($messages as $message): ?>
+                <li><?= $escaper->escapeHtml($message) ?></li>
+            <?php endforeach; ?>
+        </ul>
+        <a class="mw-topbar__service" href="<?= $escaper->escapeUrl($block->getUrl('contact')) ?>">
+            <?= $escaper->escapeHtml(__('Service Client')) ?>
+        </a>
+    </div>
+</div>

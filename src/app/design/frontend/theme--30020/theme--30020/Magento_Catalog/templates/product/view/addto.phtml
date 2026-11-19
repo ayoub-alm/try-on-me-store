@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Catalog\Block\Product\View*/
+?>
+<?php
+// TT: wrap the wishlist / compare links (child blocks since Magento 2.2) in TT's icon paragraphs.
+$ttAddToIcons = [
+    'view.addto.wishlist' => ['one', 'images/wishlist.png'],
+    'view.addto.compare' => ['two', 'images/compare.png'],
+];
+?>
+<div class="product-addto-links ttr_prodes_WCE" data-role="add-to-links" style="margin-top: 12px;">
+    <?php foreach ($block->getChildNames() as $ttChildName): ?>
+        <?php $ttChildHtml = (string)$block->getLayout()->renderElement($ttChildName); ?>
+        <?php if (isset($ttAddToIcons[$ttChildName]) && strpos($ttChildHtml, '<a ') !== false): ?>
+            <p class="<?= $block->escapeHtmlAttr($ttAddToIcons[$ttChildName][0]) ?>">
+                <img src="<?= $block->escapeUrl($block->getViewFileUrl($ttAddToIcons[$ttChildName][1])) ?>" alt="" style="vertical-align: middle;">
+                <?= /* @noEscape */ $ttChildHtml ?>
+            </p>
+        <?php else: ?>
+            <?= /* @noEscape */ $ttChildHtml ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</div>

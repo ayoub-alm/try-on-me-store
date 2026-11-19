@@ -1,0 +1,19 @@
+<?php
+/** @var \Magento\Catalog\Block\Product\View $block */
+/** @var \Magento\Framework\Escaper $escaper */
+/** @var \Marwa\VirtualTryOn\ViewModel\Config $vtoConfig */
+$vtoConfig = $block->getData('vto_config');
+$product = $block->getProduct();
+if (!$product || !$vtoConfig->showOnProductPage()) {
+    return;
+}
+$image = $block->getImage($product, 'product_base_image')->getImageUrl();
+$payload = $vtoConfig->getProductPayload((int)$product->getId(), (string)$product->getName(), (string)$image, (string)$product->getSku());
+?>
+<div class="vto-product">
+    <button type="button" class="vto-product__button" data-vto-product="<?= $escaper->escapeHtmlAttr($payload) ?>">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+        <span><?= $escaper->escapeHtml(__('Essayer virtuellement')) ?></span>
+    </button>
+    <p class="vto-product__hint"><?= $escaper->escapeHtml(__('Voyez cet article sur vous, en direct avec votre caméra.')) ?></p>
+</div>

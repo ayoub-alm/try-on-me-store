@@ -1,0 +1,20 @@
+{
+"name": "theme-30020/theme-frontend-theme-30020",
+"description": "Magento 2.4 theme made with TemplateToaster",
+"require": {
+"php": "~8.2.0||~8.3.0||~8.4.0||~8.5.0",
+"magento/theme-frontend-blank": "*",
+"magento/framework": "*"
+},
+"type": "magento2-theme",
+"version": "1.0.0",
+"license": [
+"OSL-3.0",
+"AFL-3.0"
+],
+"autoload": {
+"files": [
+"registration.php"
+]
+}
+}

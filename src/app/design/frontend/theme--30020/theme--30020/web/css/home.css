@@ -1,0 +1,232 @@
+/* Home page (cms_index_index) - Marwa-style layout for theme--30020 */
+.cms-index-index #ttr_content_margin { max-width: 1440px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+.cms-index-index .page.messages:empty { display: none; }
+
+/* ---------- Hero slideshow: full image, one white button at the bottom ---------- */
+.cms-index-index .ttr_slide,
+.cms-index-index #ttr_slideshow_inner,
+.cms-index-index #ttr_slideshow_inner ul > li > a,
+.cms-index-index .ttr_slideshow_last { height: 680px; }
+.cms-index-index .ttr_slide { position: relative; }
+.cms-index-index .ttr_slide::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.35) 100%);
+}
+.cms-index-index .ttr_slideshow_last { z-index: 2; }
+.cms-index-index .ttr_slideshowshape01,
+.cms-index-index .ttr_slideshowshape11,
+.cms-index-index .ttr_slideshowshape21 {
+    top: auto !important; bottom: 56px !important; left: 0 !important; right: 0 !important;
+    width: 100% !important; max-width: 100% !important; height: auto !important;
+    background: transparent !important; display: flex !important; justify-content: center; z-index: 3;
+}
+.home-hero { position: relative; z-index: 3; text-align: center; padding: 0 16px; }
+.home-hero__eyebrow {
+    display: block; margin: 0 0 14px; color: #fff; font-size: 13px; letter-spacing: .3em;
+    text-transform: uppercase; text-shadow: 0 1px 8px rgba(0,0,0,.35);
+}
+.home-hero__cta, .home-hero__cta:visited {
+    display: inline-block; position: relative; z-index: 4; pointer-events: auto;
+    min-width: 260px; padding: 16px 32px; background: #fff; color: #000 !important; border: 1px solid #fff;
+    font-size: 13px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; text-decoration: none !important;
+    transition: background-color .2s ease, color .2s ease;
+}
+.home-hero__cta:hover, .home-hero__cta:focus { background: #000; border-color: #000; color: #fff !important; }
+
+/* Slider arrows: minimal white circles instead of the green images */
+.cms-index-index #prev span, .cms-index-index #next span {
+    background: rgba(255,255,255,.9) !important; width: 44px !important; height: 44px !important;
+    border-radius: 50%; display: block; position: relative; cursor: pointer; transition: background .2s;
+}
+.cms-index-index #prev span::after, .cms-index-index #next span::after {
+    content: ""; position: absolute; top: 50%; left: 50%; width: 10px; height: 10px;
+    border-top: 1.5px solid #000; border-left: 1.5px solid #000;
+}
+.cms-index-index #prev span::after { transform: translate(-30%, -50%) rotate(-45deg); }
+.cms-index-index #next span::after { transform: translate(-70%, -50%) rotate(135deg); }
+.cms-index-index #prev span:hover, .cms-index-index #next span:hover { background: #fff !important; }
+.cms-index-index .left-button, .cms-index-index .right-button { top: 50% !important; width: 44px !important; margin-top: -22px; }
+
+@media (max-width: 767px) {
+    .cms-index-index .ttr_slide,
+    .cms-index-index #ttr_slideshow_inner,
+    .cms-index-index #ttr_slideshow_inner ul > li > a,
+    .cms-index-index .ttr_slideshow_last { height: 480px; }
+    .cms-index-index .ttr_slideshowshape01,
+    .cms-index-index .ttr_slideshowshape11,
+    .cms-index-index .ttr_slideshowshape21 { bottom: 32px !important; }
+    .home-hero__cta { min-width: 0; padding: 14px 24px; }
+}
+
+/* ---------- Shared ---------- */
+.mw-section-title {
+    margin: 0 0 32px; text-align: center !important; color: #000 !important;
+    font-size: 26px !important; font-weight: 300 !important; letter-spacing: .14em; text-transform: uppercase;
+    line-height: 1.2;
+}
+.mw-section-title__small {
+    display: block; font-size: 13px; font-weight: 500; letter-spacing: .3em; color: #727272; margin-bottom: 6px;
+}
+.mw-link, .mw-link:visited {
+    color: #000 !important; font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+    text-decoration: none !important; border-bottom: 1px solid #000; padding-bottom: 2px;
+}
+.mw-link:hover { opacity: .6; }
+.mw-btn, .mw-btn:visited {
+    display: inline-block; padding: 15px 34px; font-size: 12px; font-weight: 500; letter-spacing: .16em;
+    text-transform: uppercase; text-decoration: none !important; transition: background-color .2s, color .2s;
+}
+.mw-btn--outline { border: 1px solid #000; color: #000 !important; background: transparent; }
+.mw-btn--outline:hover { background: #000; color: #fff !important; }
+
+/* ---------- Shop by category ---------- */
+.mw-cats { margin: 64px 0 72px; }
+.mw-cats__list {
+    list-style: none; margin: 0; padding: 0; display: grid; gap: 16px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.mw-cats__item { margin: 0; }
+.mw-cats__link { display: block; text-decoration: none !important; color: #000 !important; }
+.mw-cats__img {
+    display: block; aspect-ratio: 3 / 4; background-size: cover; background-repeat: no-repeat;
+    background-color: #f3f4f5; transition: opacity .3s ease;
+}
+.mw-cats__link:hover .mw-cats__img { opacity: .85; }
+.mw-cats__label {
+    display: block; margin-top: 14px; text-align: center; font-size: 13px; font-weight: 500;
+    letter-spacing: .16em; text-transform: uppercase;
+}
+.mw-cats__link:hover .mw-cats__label { text-decoration: underline; }
+@media (max-width: 991px) {
+    .mw-cats__list {
+        display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 8px;
+        scrollbar-width: none;
+    }
+    .mw-cats__list::-webkit-scrollbar { display: none; }
+    .mw-cats__item { flex: 0 0 42%; scroll-snap-align: start; }
+}
+@media (max-width: 480px) { .mw-cats__item { flex-basis: 64%; } }
+
+/* ---------- Product collection (Marwa product cards) ---------- */
+.mw-collection { margin: 0 0 80px; scroll-margin-top: 24px; }
+.mw-collection__head { position: relative; margin-bottom: 32px; text-align: center; }
+.mw-collection__head .mw-section-title { margin: 0; }
+.mw-collection__head .mw-link { position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+@media (max-width: 767px) {
+    .mw-collection__head .mw-link { position: static; transform: none; display: inline-block; margin-top: 12px; }
+}
+.mw-collection__track {
+    list-style: none; margin: 0; padding: 0 0 8px; display: grid; gap: 20px;
+    grid-auto-flow: column; grid-auto-columns: calc((100% - 60px) / 4);
+    overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin;
+}
+@media (max-width: 991px) { .mw-collection__track { grid-auto-columns: calc((100% - 20px) / 2.3); } }
+@media (max-width: 480px) { .mw-collection__track { grid-auto-columns: 72%; gap: 12px; } }
+.mw-card { margin: 0; position: relative; scroll-snap-align: start; }
+.mw-card__media { display: block; overflow: hidden; background: #f3f4f5; }
+.mw-card__media .product-image-container { width: 100% !important; display: block; }
+.mw-card__media img { width: 100%; height: auto; display: block; transition: transform .5s ease; }
+.mw-card:hover .mw-card__media img { transform: scale(1.04); }
+.mw-card__visual { position: relative; }
+.mw-card__quickadd { margin: 8px 0 0; }
+.mw-card__quickadd .action.tocart.primary { width: 100%; padding: 12px; font-size: 11px !important; }
+@media (hover: hover) and (min-width: 768px) {
+    .mw-card__quickadd {
+        position: absolute; left: 12px; right: 12px; bottom: 12px; margin: 0;
+        opacity: 0; transform: translateY(8px); transition: opacity .25s ease, transform .25s ease;
+    }
+    .mw-card:hover .mw-card__quickadd, .mw-card__quickadd:focus-within { opacity: 1; transform: none; }
+}
+.mw-card__body { padding: 14px 2px 0; }
+.mw-card__name, .mw-card__name:visited {
+    display: block; color: #000 !important; text-decoration: none !important;
+    font-size: 13px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; line-height: 1.4;
+}
+.mw-card__name:hover { text-decoration: underline !important; }
+.mw-card__price { margin-top: 6px; }
+.mw-card__price .price-box { margin: 0; }
+.mw-card__price .price { font-size: 14px; font-weight: 400; color: #242424; }
+.mw-card__price .price-label { font-size: 12px; color: #727272; }
+.mw-card__stock { display: block; margin-top: 6px; font-size: 12px; color: #727272; text-transform: uppercase; letter-spacing: .1em; }
+
+/* ---------- Editorial banner ---------- */
+.mw-editorial {
+    display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; margin: 0 0 24px; background: #f3f4f5;
+}
+.mw-editorial__media { background-size: cover; background-position: center 30%; min-height: 420px; }
+.mw-editorial__content {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+    padding: 48px 32px; text-align: center;
+}
+.mw-editorial__title {
+    margin: 0; color: #000 !important; text-align: center !important;
+    font-size: clamp(28px, 3.2vw, 44px) !important; font-weight: 300 !important; line-height: 1.25; letter-spacing: .02em;
+}
+@media (max-width: 767px) {
+    .mw-editorial { grid-template-columns: 1fr; min-height: 0; }
+    .mw-editorial__media { min-height: 360px; }
+}
+
+/* ---------- Two promo banners ---------- */
+.mw-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 0 0 80px; }
+.mw-duo__item { position: relative; display: block; overflow: hidden; color: #fff !important; text-decoration: none !important; }
+.mw-duo__img {
+    display: block; aspect-ratio: 4 / 5; background-size: cover; background-position: center 30%;
+    transition: transform .6s ease;
+}
+.mw-duo__item:hover .mw-duo__img { transform: scale(1.03); }
+.mw-duo__item::after {
+    content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.45) 100%);
+}
+.mw-duo__text {
+    position: absolute; left: 0; right: 0; bottom: 40px; z-index: 1; text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.mw-duo__title { font-size: 26px; font-weight: 300; letter-spacing: .16em; text-transform: uppercase; color: #fff; }
+.mw-duo__cta {
+    font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: #fff;
+    border-bottom: 1px solid #fff; padding-bottom: 2px;
+}
+@media (max-width: 767px) { .mw-duo { grid-template-columns: 1fr; gap: 16px; } }
+
+/* ---------- Fixes after visual check ---------- */
+.mw-collection__track, .mw-cats__list { list-style: none !important; }
+.mw-collection__track > li::marker, .mw-cats__list > li::marker { content: none; }
+.mw-collection__track > li, .mw-cats__list > li { list-style: none !important; padding-left: 0 !important; }
+/* Hero button: fill the slide and pin content to the bottom */
+.cms-index-index .ttr_slideshowshape01,
+.cms-index-index .ttr_slideshowshape11,
+.cms-index-index .ttr_slideshowshape21 {
+    top: 0 !important; bottom: 0 !important; height: 100% !important;
+    align-items: flex-end !important; padding-bottom: 56px; box-sizing: border-box;
+}
+@media (max-width: 767px) {
+    .cms-index-index .ttr_slideshowshape01,
+    .cms-index-index .ttr_slideshowshape11,
+    .cms-index-index .ttr_slideshowshape21 { padding-bottom: 32px; bottom: 0 !important; }
+}
+
+/* Hero: position the button against the slide itself (TT wrappers have unreliable heights) */
+.cms-index-index .ttr_slide .ttr_slideshow_last,
+.cms-index-index .ttr_slideshowshape01,
+.cms-index-index .ttr_slideshowshape11,
+.cms-index-index .ttr_slideshowshape21 { position: static !important; padding: 0 !important; }
+.cms-index-index .ttr_slide .home-hero {
+    position: absolute !important; left: 0; right: 0; bottom: 56px; z-index: 5; margin: 0;
+}
+@media (max-width: 767px) { .cms-index-index .ttr_slide .home-hero { bottom: 32px; } }
+
+/* Mobile: keep content inside the viewport */
+@media (max-width: 767px) {
+    .cms-index-index #ttr_content_margin {
+        padding-left: 16px !important; padding-right: 16px !important;
+        width: auto !important; max-width: 100% !important; box-sizing: border-box;
+        margin-left: 0 !important; margin-right: 0 !important;
+    }
+    .cms-index-index #ttr_content, .cms-index-index #ttr_content_and_sidebar_container,
+    .cms-index-index #ttr_content_zero_sidebar { width: 100% !important; max-width: 100% !important; margin: 0 !important; padding: 0 !important; }
+    .mw-editorial__title { font-size: 26px !important; }
+}
+
+/* Each slide is its own stacking context so hidden slides' text never shows through */
+.cms-index-index #ttr_slideshow_inner > ul > li.ttr_slide { isolation: isolate; }

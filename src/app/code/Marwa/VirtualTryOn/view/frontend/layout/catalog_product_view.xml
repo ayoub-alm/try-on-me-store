@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.main">
+            <block class="Magento\Catalog\Block\Product\View" name="vto.product.button" after="-"
+                   template="Marwa_VirtualTryOn::product/button.phtml" ifconfig="marwa_virtualtryon/general/show_on_product_page">
+                <arguments>
+                    <argument name="vto_config" xsi:type="object">Marwa\VirtualTryOn\ViewModel\Config</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+    Hosts the TemplateToaster theme loads from (Content Security Policy, Magento 2.4.7+ blocks unknown hosts on
+    checkout pages and reports them elsewhere): the Google WebFont loader and Google Fonts. Not needed when the theme
+    was exported with "Host Google Fonts locally".
+-->
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="tt-google-webfont" type="host">ajax.googleapis.com</value>
+            </values>
+        </policy>
+        <policy id="style-src">
+            <values>
+                <value id="tt-google-fonts-css" type="host">fonts.googleapis.com</value>
+            </values>
+        </policy>
+        <policy id="font-src">
+            <values>
+                <value id="tt-google-fonts" type="host">fonts.gstatic.com</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>

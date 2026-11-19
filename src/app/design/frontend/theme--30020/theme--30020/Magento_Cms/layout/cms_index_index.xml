@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="css/home.css"/>
+    </head>
+    <body>
+        <!-- Home page is built from the theme templates below (Marwa layout) -->
+        <referenceBlock name="page.main.title" remove="true"/>
+        <!-- The CMS "Home Page" content only held placeholder text and a duplicate product list.
+             Delete this line to show the admin CMS content again. -->
+        <referenceBlock name="cms_page" remove="true"/>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="home.categories" after="-"
+                   template="Magento_Cms::home/categories.phtml"/>
+            <block class="Magento\CatalogWidget\Block\Product\ProductsList" name="home.new.arrivals" after="home.categories"
+                   template="Magento_Cms::home/new-arrivals.phtml">
+                <arguments>
+                    <argument name="title" xsi:type="string">Nouveautés</argument>
+                    <!-- "Voir plus" link target (category URL key) -->
+                    <argument name="more_path" xsi:type="string">nouveautes.html</argument>
+                    <argument name="products_count" xsi:type="number">10</argument>
+                    <argument name="show_pager" xsi:type="boolean">false</argument>
+                    <argument name="conditions_encoded" xsi:type="string">^[`1`:^[`type`:`Magento||CatalogWidget||Model||Rule||Condition||Combine`,`aggregator`:`all`,`value`:`1`,`new_child`:``^],`1--1`:^[`type`:`Magento||CatalogWidget||Model||Rule||Condition||Product`,`attribute`:`category_ids`,`operator`:`==`,`value`:`4`^]^]</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Template" name="home.editorial" after="home.new.arrivals"
+                   template="Magento_Cms::home/editorial.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

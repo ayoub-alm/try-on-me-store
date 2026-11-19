@@ -1,0 +1,54 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Multishipping\Block\Checkout\Success $block */
+?>
+<?php include('address_button.php') ?>
+<form action="<?= $block->escapeUrl($block->getContinueUrl()); ?>" method="post">
+    <div class="multicheckout success  ttr_address_link_border  ttr_cart_content" style="padding: 10px;">
+        <p><?= $block->escapeHtml(__('For successfully order items, you\'ll receive a confirmation email including '.
+                'order numbers, tracking information and more details.')) ?></p>
+        <?php if ($orderIds = $block->getOrderIds()) : ?>
+            <h3 class="ttr_prodsigninheading"><?= $block->escapeHtml(__('Successfully ordered'))?></h3>
+            <div class="orders-succeed">
+            <ul class="orders-list">
+            <?php foreach ($orderIds as $orderId => $incrementId) : ?>
+                <li class="shipping-list">
+                    <div class="order-id"><a href="<?= $block->escapeUrl($block->getViewOrderUrl($orderId)); ?>">
+                        <?= $block->escapeHtml($incrementId); ?></a>
+                    </div>
+                <?php $shippingAddress = $block->getCheckoutData()->getOrderShippingAddress($orderId); ?>
+                    <div class="shipping-item">
+                        <?php if ($shippingAddress) : ?>
+                        <span class="shipping-label"><?= $block->escapeHtml(__('Ship to:')); ?></span>
+                        <span class="shipping-address">
+                            <?= $block->escapeHtml(
+                                $block->getCheckoutData()->formatOrderShippingAddress($shippingAddress)
+                            ); ?>
+                        </span>
+                        <?php else : ?>
+                            <span class="shipping-address">
+                                <?= $block->escapeHtml(__('No shipping required.')); ?>
+                            </span>
+                        <?php endif; ?>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+            </ul>
+            </div>
+        <?php endif; ?>
+        <?= $block->getChildHtml() ?>
+    </div>
+    <hr>
+    <div class="actions-toolbar" id="review-buttons-container" style="float:right;">
+        <div class="primary">
+            <button type="submit"
+                    class="action primary submit <?= /* @noEscape */ $button_value ?>"><span><?= $block->escapeHtml(__('Continue Shopping')); ?></span>
+            </button>
+        </div>
+    </div>
+    <div style="clear: both;"></div>
+</form>

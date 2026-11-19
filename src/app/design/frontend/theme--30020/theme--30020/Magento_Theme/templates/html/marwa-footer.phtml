@@ -1,0 +1,92 @@
+<?php
+/** @var \Magento\Newsletter\Block\Subscribe $block */
+/** @var \Magento\Framework\Escaper $escaper */
+$help = [
+    'livraisons' => __('Livraisons'),
+    'retours' => __('Retours'),
+    'guide-des-tailles' => __('Guide des Tailles'),
+    'faq' => __('FAQ'),
+    'contact' => __('Contact'),
+];
+$legal = [
+    'cgv' => __('CGV'),
+    'privacy-policy-cookie-restriction-mode' => __('Politique de confidentialité'),
+    'mentions-legales' => __('Mentions légales'),
+];
+$social = [
+    'Instagram' => [
+        'url' => 'https://www.instagram.com/marwastores/',
+        'icon' => '<path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.3 2.3 2.3 4.3 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.2 3.6 2.2 5.6 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.6-.2 5.6-2.2 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.2-3.6-2.2-5.6-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.7.1 4 1.4 4.1 4.1.1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.7-1.4 4-4.1 4.1-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.7-.1-4-1.4-4.1-4.1-.1-1-.1-1.3-.1-4s0-3 .1-4C4 5.3 5.3 4 8 3.9c1-.1 1.3-.1 4-.1z"/>',
+    ],
+    'Facebook' => [
+        'url' => 'https://www.facebook.com/marwastores/',
+        'icon' => '<path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22h3.4z"/>',
+    ],
+    'TikTok' => [
+        'url' => 'https://www.tiktok.com/@marwastores',
+        'icon' => '<path d="M16.6 2h-3.3v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.2a6.2 6.2 0 1 0 5.3 6.2V8.6a7.9 7.9 0 0 0 4.4 1.3V6.6A4.4 4.4 0 0 1 16.6 2z"/>',
+    ],
+    'LinkedIn' => [
+        'url' => 'https://www.linkedin.com/company/folly-fashion---marwa',
+        'icon' => '<path d="M6.9 8.8H3.5V20h3.4V8.8zM5.2 3.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM20.5 13.8c0-3-.7-5.3-4.2-5.3-1.7 0-2.8.9-3.3 1.8V8.8H9.8V20h3.4v-5.5c0-1.5.3-2.9 2.1-2.9s1.8 1.7 1.8 3V20h3.4v-6.2z"/>',
+    ],
+];
+?>
+<div class="mw-footer">
+    <section class="mw-footer__newsletter">
+        <h2><?= $escaper->escapeHtml(__('Newsletter')) ?></h2>
+        <p><?= $escaper->escapeHtml(__('Recevez nos nouveautés et offres exclusives')) ?></p>
+        <form class="mw-footer__form" novalidate
+              action="<?= $escaper->escapeUrl($block->getFormActionUrl()) ?>" method="post"
+              data-mage-init='{"validation": {"errorClass": "mage-error"}}' id="mw-newsletter-form">
+            <label for="mw-newsletter-email" class="sr-only"><?= $escaper->escapeHtml(__('Adresse e-mail')) ?></label>
+            <input name="email" type="email" id="mw-newsletter-email"
+                   placeholder="<?= $escaper->escapeHtmlAttr(__('Votre adresse e-mail')) ?>"
+                   data-validate="{required:true, 'validate-email':true}"/>
+            <button type="submit"><?= $escaper->escapeHtml(__("S'inscrire")) ?></button>
+        </form>
+    </section>
+
+    <div class="mw-footer__cols">
+        <div>
+            <h3 class="mw-footer__title"><?= $escaper->escapeHtml(__('Aide & services')) ?></h3>
+            <ul class="mw-footer__list">
+                <?php foreach ($help as $path => $label): ?>
+                    <li><a href="<?= $escaper->escapeUrl($block->getUrl($path)) ?>"><?= $escaper->escapeHtml($label) ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <div>
+            <h3 class="mw-footer__title"><?= $escaper->escapeHtml(__('Service client')) ?></h3>
+            <ul class="mw-footer__list">
+                <li><a class="mw-footer__phone" href="tel:+212660745631">+212 660745631</a></li>
+                <li><a href="<?= $escaper->escapeUrl($block->getUrl('contact')) ?>"><?= $escaper->escapeHtml(__('Partenariats')) ?></a></li>
+                <li><a href="<?= $escaper->escapeUrl($block->getUrl('contact')) ?>"><?= $escaper->escapeHtml(__('Candidatures')) ?></a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="mw-footer__title"><?= $escaper->escapeHtml(__('Informations légales')) ?></h3>
+            <ul class="mw-footer__list">
+                <?php foreach ($legal as $path => $label): ?>
+                    <li><a href="<?= $escaper->escapeUrl($block->getUrl($path)) ?>"><?= $escaper->escapeHtml($label) ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <div>
+            <h3 class="mw-footer__title"><?= $escaper->escapeHtml(__('Suivez-nous')) ?></h3>
+            <div class="mw-footer__social">
+                <?php foreach ($social as $name => $item): ?>
+                    <a href="<?= $escaper->escapeUrl($item['url']) ?>" target="_blank" rel="noopener"
+                       aria-label="<?= $escaper->escapeHtmlAttr($name) ?>">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><?= /* @noEscape */ $item['icon'] ?></svg>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="mw-footer__bottom">
+        <span><?= $escaper->escapeHtml(__('Maroc | Français')) ?></span>
+        <span>© <?= (int)date('Y') ?> Marwa</span>
+    </div>
+</div>

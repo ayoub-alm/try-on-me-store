@@ -1,0 +1,31 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
+// Tiles link to the Marwa categories created by the catalog import (url keys match marwa.com).
+$categories = [
+    ['label' => __('Robes'), 'path' => 'vetements/robes.html', 'image' => 'images/categories/categorie-robe.jpg', 'pos' => '50% 20%'],
+    ['label' => __('Chemises'), 'path' => 'vetements/blouses-chemises.html', 'image' => 'images/categories/blouse-et-chemise-categorie.jpg', 'pos' => '50% 20%'],
+    ['label' => __('Vestes'), 'path' => 'vetements/vestes.html', 'image' => 'images/categories/vestecategorie.jpg', 'pos' => '50% 20%'],
+    ['label' => __('Jeans'), 'path' => 'vetements/denim.html', 'image' => 'images/categories/categorie-jean.jpg', 'pos' => '50% 20%'],
+    ['label' => __('Manteaux'), 'path' => 'vetements/manteaux-femme.html', 'image' => 'images/categories/manteau-categorie.jpg', 'pos' => '50% 20%'],
+];
+?>
+<section class="mw-cats">
+    <h2 class="mw-section-title">
+        <span class="mw-section-title__small"><?= $escaper->escapeHtml(__('Shoppez')) ?></span>
+        <?= $escaper->escapeHtml(__('par catégorie')) ?>
+    </h2>
+    <ul class="mw-cats__list">
+        <?php foreach ($categories as $cat): ?>
+            <li class="mw-cats__item">
+                <a class="mw-cats__link"
+                   href="<?= $escaper->escapeUrl($block->getBaseUrl() . $cat['path']) ?>">
+                    <span class="mw-cats__img"
+                          style="background-image:url('<?= $escaper->escapeUrl($block->getViewFileUrl($cat['image'])) ?>');background-position:<?= $escaper->escapeHtmlAttr($cat['pos']) ?>"></span>
+                    <span class="mw-cats__label"><?= $escaper->escapeHtml($cat['label']) ?></span>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</section>

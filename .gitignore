@@ -1,2 +1,18 @@
-src/
+# Magento source: only the custom work is tracked.
+# Everything else (vendor, generated, var, pub/static, pub/media, app/etc/env.php) is installed or built.
+/src/*
+!/src/app/
+/src/app/*
+!/src/app/code/
+!/src/app/design/
+!/src/app/etc/
+/src/app/etc/*
+!/src/app/etc/config.php
+!/src/composer.json
+!/src/composer.lock
+!/src/var/
+/src/var/*
+!/src/var/marwa-import/
+/src/var/marwa-import/images/
+
 compose.versions.yaml

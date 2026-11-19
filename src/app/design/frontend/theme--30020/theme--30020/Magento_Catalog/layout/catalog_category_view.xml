@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<body>
+<referenceBlock name="category.products.list">
+<action method="setColumnCount">
+<argument name="column" xsi:type="string">4</argument>
+</action>
+<action method="setTabColumnCount">
+<argument name="Tabcolumn" xsi:type="string">2</argument>
+</action>
+<action method="setMobColumnCount">
+<argument name="Mobcolumn" xsi:type="string">1</argument>
+</action>
+</referenceBlock>
+</body>
+</page>
